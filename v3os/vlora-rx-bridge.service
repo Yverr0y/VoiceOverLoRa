@@ -1,0 +1,18 @@
+[Unit]
+Description=VLoRa RX Bridge - Codec2 LoRa to ATAK Vx
+After=network-online.target cot-bridge.service
+Wants=network-online.target
+BindsTo=cot-bridge.service
+
+[Service]
+Type=simple
+ExecStart=/opt/nucleus/venv/bin/python /opt/nucleus/vlora/vlora_rx_bridge.py
+Restart=always
+RestartSec=3
+User=natak
+Group=natak
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

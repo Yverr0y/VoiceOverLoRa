@@ -1,0 +1,13 @@
+diff --git a/nucleusd/meshtastic/cot_bridge.py b/nucleusd/meshtastic/cot_bridge.py
+index f3c0366..1c67a68 100755
+--- a/nucleusd/meshtastic/cot_bridge.py
++++ b/nucleusd/meshtastic/cot_bridge.py
+@@ -489,7 +489,7 @@ def _handle_stream_rx(packet, decoded):
+         sender = packet.get("from")
+         num = sender if isinstance(sender, int) else 0
+         stream_fwd_sock.sendto(
+-            struct.pack("<I", num & 0xFFFFFFFF) + audio, STREAM_FORWARD)
++            audio, STREAM_FORWARD)
+         stats["stream_rx"] += 1
+         logger.debug(f"STREAM RX ← LoRa | {from_id} | seq={seq} | "
+                      f"{len(audio)}B | SNR={rx_snr}")
